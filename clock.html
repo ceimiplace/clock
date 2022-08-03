@@ -14,7 +14,14 @@
         }
 
         body {
+            height: 100vh;
             padding: 20px;
+            display: flex;
+            justify-content: center;
+
+
+
+            background-image: linear-gradient(pink, white, pink);
         }
 
         .container {
@@ -193,6 +200,7 @@
         setDate(seconds);
         setInterval(() => {
             seconds = seconds + 1;
+            uiSeconds.style.transform = `rotate(${(-90 + seconds * 6)}deg)`;
             if (seconds === 60) {
                 seconds = 0;
                 minutes = minutes + 1;
@@ -206,7 +214,7 @@
                     }
                 }
             }
-            uiSeconds.style.transform = `rotate(${(-90 + seconds * 6)}deg)`
+
         }, 1000)
     </script>
 </body>
