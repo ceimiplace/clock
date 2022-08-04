@@ -18,6 +18,9 @@
             padding: 20px;
             display: flex;
             justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
 
 
 
@@ -179,7 +182,10 @@
         let uiMinutes = document.querySelector(".minutes");
         let uiSeconds = document.querySelector(".seconds");
         let uiHours = document.querySelector(".hour");
+        let showUnderClock = document.createElement("p");
 
+        showUnderClock.textContent = `${hour}:${minutes}${seconds}`;
+        document.body.appendChild(showUnderClock);
         function setDate(element) {
 
 
@@ -214,6 +220,10 @@
                     }
                 }
             }
+
+
+
+            showUnderClock.textContent = `${hour}:${minutes}:${seconds}`;
 
         }, 1000)
     </script>
