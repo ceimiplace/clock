@@ -57,6 +57,7 @@
 
       .seconds {
         width: 70px;
+        --my-var: 0px;
       }
 
       .one,
@@ -203,6 +204,9 @@
       uiSeconds.style.transform = `rotate(${-90 + seconds * 6}deg)`;
       uiMinutes.style.transform = `rotate(${-90 + minutes * 6}deg)`;
       uiHours.style.transform = `rotate(${-90 + hour * 30}deg)`;
+      let rotationSeconds = seconds;
+      let rotationMinutes = minutes;
+      let rotationHour = hour;
 
       //display hour
 
@@ -218,17 +222,21 @@
       )}`;
       //move arms and show hour
 
+      //
       setInterval(() => {
-        uiSeconds.style.transform += `rotate(6deg)`;
-        seconds = seconds + 1;
+        seconds++;
+        rotationSeconds++;
+        uiSeconds.style.transform = `rotate(${-90 + rotationSeconds * 6}deg)`;
         if (seconds === 60) {
           seconds = 0;
-          minutes = minutes + 1;
-          uiMinutes.style.transform += `rotate(6deg)`;
+          minutes++;
+          rotationMinutes++;
+          uiMinutes.style.transform = `rotate(${-90 + rotationMinutes * 6}deg)`;
           if (minutes === 60) {
             minutes = 0;
-            hour = hour + 1;
-            uiHours.style.transform += `rotate(30deg)`;
+            hour++;
+            rotationHour++;
+            uiHours.style.transform = `rotate(${-90 + hour * 30}deg)`;
             if (hour === 24) {
               hour = 0;
             }
