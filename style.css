@@ -1,0 +1,145 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+
+  background-image: linear-gradient(rgb(35, 35, 128), rgb(76, 65, 65));
+}
+
+.container {
+  height: 300px;
+  width: 300px;
+
+  border: 2px solid white;
+  position: relative;
+  border-radius: 50%;
+}
+
+.hour,
+.minutes,
+.seconds {
+  height: 2px;
+  background-color: whitesmoke;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: left;
+
+  transition: all 0.5s ease;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.hour {
+  width: 120px;
+}
+
+.minutes {
+  width: 90px;
+}
+
+.seconds {
+  width: 70px;
+  --my-var: 0px;
+}
+
+.one,
+.two,
+.three,
+.four,
+.five,
+.six,
+.seven,
+.eight,
+.nine,
+.ten,
+.eleven,
+.twelve {
+  position: absolute;
+  color: white;
+}
+
+.one {
+  top: 7%;
+  left: 72%;
+}
+
+.two {
+  left: 90%;
+  top: 25%;
+}
+
+.three {
+  left: 95%;
+  top: 47%;
+}
+
+.twelve {
+  left: 47.5%;
+  top: 2%;
+}
+
+.four {
+  left: 88%;
+  top: 70%;
+}
+
+.five {
+  left: 72%;
+  top: 87%;
+}
+
+.six {
+  top: 94%;
+  left: 47%;
+}
+
+.seven {
+  top: 88%;
+  left: 25%;
+}
+
+.eight {
+  top: 70%;
+  left: 8%;
+}
+
+.nine {
+  top: 47%;
+  left: 2%;
+}
+
+.ten {
+  top: 25%;
+  left: 7%;
+}
+
+.eleven {
+  top: 7%;
+  left: 25%;
+}
+
+.show {
+  color: white;
+  font-size: 25px;
+}
+.play,
+.stop {
+  padding: 10px;
+  background-color: rgb(35, 35, 128);
+  color: white;
+  cursor: pointer;
+}
+.play:active,
+.stop:active {
+  cursor: grab;
+}

@@ -1,255 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
 
-      body {
-        height: 100vh;
-        padding: 20px;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-        gap: 30px;
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-        background-image: linear-gradient(rgb(35, 35, 128), rgb(76, 65, 65));
-      }
+<body>
+  <div class="container">
+    <div class="one">1</div>
+    <div class="two">2</div>
+    <div class="three">3</div>
+    <div class="four">4</div>
+    <div class="five">5</div>
+    <div class="six">6</div>
+    <div class="seven">7</div>
+    <div class="eight">8</div>
+    <div class="nine">9</div>
+    <div class="ten">10</div>
+    <div class="eleven">11</div>
+    <div class="twelve">12</div>
+    <div class="hour"></div>
+    <div class="minutes"></div>
+    <div class="seconds"></div>
+  </div>
+  <div class="show"></div>
+  <button class="play">Play with sounds</button>
+  <button class="stop">Play without sound</button>
+  <audio src="./sounds/Clock-ticking-Turning-1-www (mp3cut.net).mp3"></audio>
+  <script src="script.js"></script>
+</body>
 
-      .container {
-        height: 300px;
-        width: 300px;
-
-        border: 2px solid white;
-        position: relative;
-        border-radius: 50%;
-      }
-
-      .hour,
-      .minutes,
-      .seconds {
-        height: 2px;
-        background-color: whitesmoke;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform-origin: left;
-
-        transition: all 0.5s ease;
-        transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-      }
-
-      .hour {
-        width: 120px;
-      }
-
-      .minutes {
-        width: 90px;
-      }
-
-      .seconds {
-        width: 70px;
-        --my-var: 0px;
-      }
-
-      .one,
-      .two,
-      .three,
-      .four,
-      .five,
-      .six,
-      .seven,
-      .eight,
-      .nine,
-      .ten,
-      .eleven,
-      .twelve {
-        position: absolute;
-        color: white;
-      }
-
-      .one {
-        top: 7%;
-        left: 72%;
-      }
-
-      .two {
-        left: 90%;
-        top: 25%;
-      }
-
-      .three {
-        left: 95%;
-        top: 47%;
-      }
-
-      .twelve {
-        left: 47.5%;
-        top: 2%;
-      }
-
-      .four {
-        left: 88%;
-        top: 70%;
-      }
-
-      .five {
-        left: 72%;
-        top: 87%;
-      }
-
-      .six {
-        top: 94%;
-        left: 47%;
-      }
-
-      .seven {
-        top: 88%;
-        left: 25%;
-      }
-
-      .eight {
-        top: 70%;
-        left: 8%;
-      }
-
-      .nine {
-        top: 47%;
-        left: 2%;
-      }
-
-      .ten {
-        top: 25%;
-        left: 7%;
-      }
-
-      .eleven {
-        top: 7%;
-        left: 25%;
-      }
-
-      .show {
-        color: white;
-        font-size: 25px;
-      }
-      .play,
-      .stop {
-        padding: 10px;
-        background-color: rgb(35, 35, 128);
-        color: white;
-        cursor: pointer;
-      }
-      .play:active,
-      .stop:active {
-        cursor: grab;
-      }
-    </style>
-  </head>
-
-  <body>
-    <div class="container">
-      <div class="one">1</div>
-      <div class="two">2</div>
-      <div class="three">3</div>
-      <div class="four">4</div>
-      <div class="five">5</div>
-      <div class="six">6</div>
-      <div class="seven">7</div>
-      <div class="eight">8</div>
-      <div class="nine">9</div>
-      <div class="ten">10</div>
-      <div class="eleven">11</div>
-      <div class="twelve">12</div>
-      <div class="hour"></div>
-      <div class="minutes"></div>
-      <div class="seconds"></div>
-    </div>
-    <div class="show"></div>
-    <button class="play">Play with sounds</button>
-    <button class="stop">Play without sound</button>
-    <audio src="./sounds/Clock-ticking-Turning-1-www (mp3cut.net).mp3"></audio>
-    <script>
-      //added audio and sounds and button start + stop
-      let audio = null;
-      let start = document.querySelector(".play");
-      let stop = document.querySelector(".stop");
-      start.addEventListener("click", () => {
-        audio = document.querySelector("audio");
-      });
-      stop.addEventListener("click", () => {
-        audio = null;
-      });
-      //get info about time
-      //start
-      let date = new Date();
-      let minutes = date.getMinutes();
-      let hour = date.getHours();
-      let seconds = date.getSeconds();
-      //stop
-      //select from html
-      //start
-      let uiMinutes = document.querySelector(".minutes");
-      let uiSeconds = document.querySelector(".seconds");
-      let uiHours = document.querySelector(".hour");
-      let show = document.querySelector(".show");
-      //stop
-      uiSeconds.style.transform = `rotate(${-90 + seconds * 6}deg)`;
-      uiMinutes.style.transform = `rotate(${-90 + minutes * 6}deg)`;
-      uiHours.style.transform = `rotate(${-90 + hour * 30}deg)`;
-      let rotationSeconds = seconds;
-      let rotationMinutes = minutes;
-      let rotationHour = hour;
-
-      //display hour
-
-      function addZero(element) {
-        if (element < 10) {
-          return "0" + element;
-        } else {
-          return element;
-        }
-      }
-      show.textContent = `${addZero(hour)}:${addZero(minutes)}:${addZero(
-        seconds
-      )}`;
-      //move arms and show hour
-
-      //
-      setInterval(() => {
-        seconds++;
-        rotationSeconds++;
-        uiSeconds.style.transform = `rotate(${-90 + rotationSeconds * 6}deg)`;
-        if (seconds === 60) {
-          seconds = 0;
-          minutes++;
-          rotationMinutes++;
-          uiMinutes.style.transform = `rotate(${-90 + rotationMinutes * 6}deg)`;
-          if (minutes === 60) {
-            minutes = 0;
-            hour++;
-            rotationHour++;
-            uiHours.style.transform = `rotate(${-90 + hour * 30}deg)`;
-            if (hour === 24) {
-              hour = 0;
-            }
-          }
-        }
-        if (audio) {
-          audio.play();
-        }
-
-        show.textContent = `${addZero(hour)}:${addZero(minutes)}:${addZero(
-          seconds
-        )}`;
-      }, 1000);
-    </script>
-  </body>
 </html>
